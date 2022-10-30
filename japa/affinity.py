@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-kapa.affinity
-
-Calculates the similarity of an antibody to antigen using the hamming distance
-
-"""
 
 def calculate_affinity(antigen, antibody):
     affinity = 0

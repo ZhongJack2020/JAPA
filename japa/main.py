@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-kapa.main
-
-Contains main CLONALG function
-
-"""
 
 from .clone    import clone_antibody
 from .affinity import calculate_affinity

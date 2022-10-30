@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-kapa.clone
-
-Creates a number of clones of an antibody, proportional to its affinity
-
-"""
 
 import copy
 

@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-kapa.mutate
-
-Mutates an antibody inversely proportional to its affinity
-(Bad antigens get more mutations)
-
-"""
 
 import random
 
