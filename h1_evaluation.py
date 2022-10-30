@@ -3,7 +3,8 @@ import kapa
 import sys
 import csv
 
-digit_names = ['0', '1', '2', '3', '4', '6', 'period', '9']
+digit_names = ["0","1","2","3","4","6","period","9"]
+#digit_names = ['0', '1', '2', '3', '4', '6', 'period', '9']
 #digit_names = ['left', 'right']
 
 def print_shape(shape):
@@ -16,11 +17,11 @@ def print_shape(shape):
                 row += 'X'
             else:
                 row += ' '
-        print row
+        print(row)
 
 affinity_graph = []
 
-for i in range(30):
+for i in range(1):
     affinity_graph += kapa.kapa(
         antigens             = [helpers.create_antigen(name) for name in digit_names],
         antibodies           = [kapa.Antibody() for _ in range(10)],
@@ -33,7 +34,7 @@ for i in range(30):
 for affinity_rating in affinity_graph:
     affinity_rating['key'] = digit_names[affinity_rating['key']]
 
-with open('output.csv', 'wb') as output_csv:
+with open('output.csv', 'w') as output_csv:
     dict_writer = csv.DictWriter(output_csv, ['generation', 'key', 'affinity'])
     dict_writer.writeheader()
     dict_writer.writerows(affinity_graph)

@@ -13,7 +13,7 @@ def print_shape(shape):
                 row += 'X'
             else:
                 row += ' '
-        print row
+        print(row)
 
 results = []
 
@@ -27,7 +27,7 @@ for i in range(1, 11):
             num_kill_antibodies  = 0,
             clone_multiplier     = 10
         )
-        print result
+        print(result)
         results.append({
             'antigens' : i,
             'generations' : result

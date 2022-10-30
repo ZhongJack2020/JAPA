@@ -27,7 +27,7 @@ def print_shape(shape):
             else:
                 output += ' '
         output += '\n'
-    print output
+    print(output)
 
 
 def kapa(
@@ -36,7 +36,7 @@ def kapa(
     generations,          # Number of times to run algorithm over each antigen
     num_clone_antibodies, # Number of highest affinity antigens to clone
     num_kill_antibodies,  # Number of lowest affinity antigens to kill
-    clone_multiplier      # Rate to clone an antibody relative to its affinity (how good it is)
+    clone_multiplier      # Rate to'' clone an antibody relative to its affinity (how good it is)
     ):
     # Antibodies preserved between antigen runs
     memory_antibodies = random.sample(antibodies, len(antigens))
@@ -46,16 +46,16 @@ def kapa(
     # Ensures memory antigens aren't killed
     num_kill_antibodies = min(num_kill_antibodies, len(antibodies) - len(antigens))
 
-    for g in xrange(generations):
+    for g in range(generations):
         if early_termination or all(antibody.memfinity == 0 for antibody in memory_antibodies):
             if not early_termination:
-                print 'Terminating early at generation {0}'.format(g)
+                print('Terminating early at generation {0}'.format(g))
                 early_termination = True
 
             for antigen_key in range(len(antigens)):
                 affinity_graph.append({'key' : antigen_key, 'generation' : g, 'affinity' : 0})
             continue
-        print g
+        print(g)
         """
         1. Select antigen and present it all antibodies
         """
