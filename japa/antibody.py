@@ -16,5 +16,5 @@ class Antibody:
         else:
             self.shape = [random.random() >= .5 for s in range(120)]
 
-        self.affinity = float('inf')
-        self.memfinity = float('inf')
+        self.affinity = 0
+        self.memfinity = 0

@@ -1,5 +1,5 @@
 import helpers
-import kapa
+import japa
 import sys
 import csv
 
@@ -19,9 +19,9 @@ results = []
 
 for i in range(1, 11):
     for _ in range(30):
-        result = kapa.kapa(
-            antigens             = [kapa.Antibody() for _ in range(i)],
-            antibodies           = [kapa.Antibody() for _ in range(10)],
+        result = japa.japa(
+            antigens             = [japa.Antibody() for _ in range(i)],
+            antibodies           = [japa.Antibody() for _ in range(10)],
             generations          = 100,
             num_clone_antibodies = 5,
             num_kill_antibodies  = 0,

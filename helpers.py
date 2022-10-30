@@ -1,5 +1,5 @@
 from matplotlib import pylab
-import kapa
+import japa
 
 def create_antigen(name):
     image_matrix = pylab.imread('digits/' + name + '.png')
@@ -8,4 +8,4 @@ def create_antigen(name):
     for row in image_matrix:
         shape += [all(pixel) == 0 for pixel in row] # Converts colour to boolean (black = True)
 
-    return kapa.Antigen(shape)
+    return japa.Antigen(shape)

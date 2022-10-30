@@ -30,7 +30,7 @@ def print_shape(shape):
     print(output)
 
 
-def kapa(
+def japa(
     antigens,             # Set of antigens to be recognised
     antibodies,           # Set of antibodies to be trained
     generations,          # Number of times to run algorithm over each antigen
@@ -47,13 +47,13 @@ def kapa(
     num_kill_antibodies = min(num_kill_antibodies, len(antibodies) - len(antigens))
 
     for g in range(generations):
-        if early_termination or all(antibody.memfinity == 0 for antibody in memory_antibodies):
+        if early_termination or all(antibody.memfinity == 1 for antibody in memory_antibodies):
             if not early_termination:
                 print('Terminating early at generation {0}'.format(g))
                 early_termination = True
 
             for antigen_key in range(len(antigens)):
-                affinity_graph.append({'key' : antigen_key, 'generation' : g, 'affinity' : 0})
+                affinity_graph.append({'key' : antigen_key, 'generation' : g, 'affinity' : 1})
             continue
         print(g)
         """
@@ -69,7 +69,7 @@ def kapa(
             """
             3. Select number of highest affinity antibodies to clone (specified in $num_clone_antibodies)
             """
-            antibodies.sort(key=lambda antibody: antibody.affinity) # Sorts by affinity
+            antibodies.sort(key=lambda antibody: antibody.affinity,reverse = True) # Sorts by affinity
 
             num_antibodies = len(antibodies)
             affinity_rank  = 0
@@ -99,9 +99,9 @@ def kapa(
             """
             7. Replace memory antibody for current antigen if best clone beats current memory antibody
             """
-            best_antibody = min(clones, key=operator.attrgetter('affinity'))
+            best_antibody = max(clones, key=operator.attrgetter('affinity')) 
 
-            if best_antibody.affinity < memory_antibodies[antigen_key].memfinity:
+            if best_antibody.affinity > memory_antibodies[antigen_key].memfinity:
                 old_antibody = memory_antibodies[antigen_key]
                 antibodies.remove(old_antibody)
 
@@ -115,7 +115,7 @@ def kapa(
             8. Replace number of worst antibodies (specified in $num_kill_antibodies)
             """
             if num_kill_antibodies > 0:
-                antibodies.sort(key=lambda antibody: antibody.affinity)
+                antibodies.sort(key=lambda antibody: antibody.affinity,reverse = True)
 
                 num_to_kill = num_kill_antibodies
 
